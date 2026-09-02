@@ -6,17 +6,15 @@ import com.example.clean_arquitecture.Clean.Arquitecture.entrypoint.exceptions.R
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 @RequiredArgsConstructor
-public class GetBookByIdOrName {
+public class GetBookById {
 
     private final BookRepository bookRepository;
 
-    public List<Book> execute(String id, String name) {
-        List<Book> bookList = this.bookRepository.getBookByIdOrName(id, name);
-        if (bookList.isEmpty()) throw new ResourceNotFoundException("Not found book with id " + id + " our name " + name);
-        return bookList;
+    public Book execute(String id) {
+        return this.bookRepository.getBookById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found book with Id:" + id));
     }
+
 }

@@ -29,10 +29,15 @@ public class BookController {
     }
 
     @GetMapping("/get-book")
-    public ResponseEntity<List<BookResponse>> findBookByIdOrName(
-            @RequestParam(name = "id", required = false) String id,
-            @RequestParam(name = "name", required = false) String name) {
-        return this.bookService.getBookByIdOrName(id, name);
+    public ResponseEntity<List<BookResponse>> findBookByName(
+            @RequestParam(name = "title", required = false) String title) {
+        return this.bookService.getBookByName(title);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<BookResponse> findBookById(
+            @PathVariable String id) {
+        return this.bookService.getBookById(id);
     }
 
     @PutMapping("/update/{id}")

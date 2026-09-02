@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class BookMapper {
 
-    public static BookResponse toEntityToResponse(Book book) {
+    public static BookResponse toDomainToResponse(Book book) {
         BookResponse response = new BookResponse();
         response.setAuthor(book.getAuthor());
         response.setTitle(book.getTitle());
@@ -23,7 +23,7 @@ public class BookMapper {
         return response;
     }
 
-    public Book toRequestToEntity(BookRequest request) {
+    public Book toRequestToDomain(BookRequest request) {
         Book entity = new Book();
         entity.setAuthor(request.getAuthor());
         entity.setTitle(request.getTitle());
@@ -38,7 +38,7 @@ public class BookMapper {
     public static List<BookResponse> toListBookResponse(List<Book> bookList) {
         List<BookResponse> responseList = new ArrayList<>();
         for (Book book : bookList) {
-            BookResponse bookResponse = toEntityToResponse(book);
+            BookResponse bookResponse = toDomainToResponse(book);
             responseList.add(bookResponse);
         }
         return responseList;

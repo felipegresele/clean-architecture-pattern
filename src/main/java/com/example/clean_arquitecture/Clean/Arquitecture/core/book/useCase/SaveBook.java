@@ -15,7 +15,7 @@ public class SaveBook {
     private final BookMapper bookMapper;
 
     public Book execute(BookRequest request) {
-        Book book = this.bookMapper.toRequestToEntity(request);
+        Book book = this.bookMapper.toRequestToDomain(request);
         this.bookRepository.save(book);
         return book;
     }

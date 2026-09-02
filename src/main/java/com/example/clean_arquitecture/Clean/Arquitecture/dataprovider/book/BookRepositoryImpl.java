@@ -34,19 +34,22 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public List<Book> getBookByIdOrName(String id, String name) {
-        Query query = new Query();
-        List<Criteria> criterias = new ArrayList<>();
+    public Optional<Book> getBookById(String id) {
+        return this.dao.findById(id).map(BookEntityMapper::entityToDomain);
+    }
 
-        if (id != null && !id.isEmpty()) {
-            criterias.add(Criteria.where("_id").is(id));
-        }
-        if (name != null && !name.isEmpty()) {
-            criterias.add(Criteria.where("title").regex(name));
-        }
+    @Override
+    public List<Book> getBookByTitle(String title) {
+       Query query = new Query();
+       List<Criteria> criterias = new ArrayList<>();
 
-        query.addCriteria(new Criteria().andOperator(criterias.toArray(new Criteria[0])));
-        return this.mongoTemplate.find(query, Book.class, BOOK_COLLECTION_NAME);
+       if (title != null && !title.isEmpty()) {
+           criterias.add(Criteria.where("title").regex(title, "i"));
+       }
+
+       query.addCriteria(new Criteria().andOperator(criterias.toArray(new Criteria[0])));
+       List<BookEntity> list = this.mongoTemplate.find(query, BookEntity.class, BOOK_COLLECTION_NAME);
+       return BookEntityMapper.listBookDomain(list);
     }
 
     @Override

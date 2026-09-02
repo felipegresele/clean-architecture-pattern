@@ -13,7 +13,8 @@ public class GetFineById {
     private final FineRepository fineRepository;
 
     public Fine execute(String id) {
-        return this.fineRepository.getFineById(id).orElseThrow(() -> new ResourceNotFoundException("Not found fine with id " + id));
+        return this.fineRepository.getFineById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found fine with id " + id));
     }
 
 }
