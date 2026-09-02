@@ -143,20 +143,3 @@ docker compose up -d
 A API estará disponível em `http://localhost:8080/api/v1/...`, com endpoints para `book`, `member`, `loan`, `reservation` e `fine`.
 
 ---
-
-## 🚧 Pontos a melhorar (roadmap de estudos)
-
-Como este é um projeto voltado para aprendizado, alguns pontos ainda estão sendo evoluídos:
-
-- [ ] Aumentar a cobertura de testes unitários e de integração
-- [ ] Adicionar validações mais robustas nos DTOs
-- [ ] Documentar a API (Swagger/OpenAPI)
-- [ ] Revisar o tratamento centralizado de exceções
-- [ ] Adicionar camada de autenticação/autorização
-- [ ] Avaliar a separação de "use cases" em interfaces (ports) para reforçar ainda mais a inversão de dependência
-
----
-
-## 📌 Observação final
-
-Este repositório não tem como objetivo ser uma referência definitiva de Clean Architecture, e sim um projeto prático para fixar os conceitos estudados. Feedbacks e sugestões são muito bem-vindos! 🙌
