@@ -1,0 +1,38 @@
+Use cases — CRUD simples (baixa complexidade)
+
+Esses são só pra você treinar a estrutura básica de um use case (input, output, gateway, controller):
+
+CreateBookUseCase — cadastrar livro
+CreateMemberUseCase — cadastrar membro
+FindBookByIdUseCase — buscar livro
+UpdateBookUseCase — editar dados do livro
+DeleteBookUseCase — remover livro (soft delete se tiver empréstimo ativo, já é uma regrinha)
+ListMembersUseCase — listar membros
+Use cases — regra de negócio de verdade (o que importa)
+
+Aqui é onde Clean Architecture prova seu valor, porque a regra vive na camada de domínio/aplicação e não em um if perdido no controller:
+
+LoanBookUseCase — emprestar um livro
+verifica se há exemplar disponível
+verifica se o membro não tem multas pendentes
+verifica se o membro não atingiu o limite de empréstimos simultâneos (ex: 3)
+se havia reserva de outro membro, bloqueia o empréstimo pra quem não é o próximo da fila
+ReturnBookUseCase — devolver livro
+calcula atraso e gera Fine automaticamente
+libera o exemplar
+notifica (ou promove) o próximo da fila de reserva, se houver
+RenewLoanUseCase — renovar empréstimo
+só permite se não houver reserva de outro membro esperando aquele livro
+só permite até N renovações
+ReserveBookUseCase — reservar livro sem exemplar disponível
+entra numa fila (ordem de chegada)
+expira reserva automaticamente se o membro não retirar em X dias após ser notificado
+PayFineUseCase — pagar multa
+desbloqueia o membro pra novos empréstimos se essa era a única pendência
+CheckMemberEligibilityUseCase — usado internamente pelos outros use cases pra centralizar a regra "esse membro pode pegar livro emprestado?" (multas, limite, suspensão)
+
+Criar Testes unitarios
+
+Aplicar Kafka
+
+Aplicar Spring Security
