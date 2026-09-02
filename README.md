@@ -1,4 +1,4 @@
-# 📚 Clean Architecture - Sistema de Biblioteca
+# Clean Architecture - Sistema de Biblioteca
 
 Projeto de **estudos** desenvolvido em **Java + Spring Boot**, criado com o objetivo de aplicar na prática os conceitos de **Clean Architecture** propostos por Robert C. Martin (Uncle Bob). A aplicação simula o backend de uma biblioteca, com o gerenciamento de **livros, membros, empréstimos, reservas e multas**.
 
