@@ -116,7 +116,6 @@ Isso é possível graças à **injeção de dependência** feita automaticamente
 - **Dependency Inversion Principle (DIP)** — o core depende de abstrações, não de implementações.
 - **Single Responsibility Principle (SRP)** — cada *use case* representa uma única ação de negócio.
 - **Independência de frameworks** — as entidades de domínio (`core/*/domain`) são POJOs simples, sem anotações do Spring ou do MongoDB.
-- **Testabilidade** — como os casos de uso dependem de interfaces, é possível criar mocks dos repositórios facilmente em testes unitários.
 
 ---
 
