@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: Clean-Arquitecture
+  data:
+    mongodb.uri: mongodb://localhost:27018/library-project
+
+springdoc:
+  api-docs:
+    path: /api/api-docs
+  swagger-ui:
+    path: /swagger/index.html
